@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+		ul li{ list-style: none; display: inline-block; margin: 0 30px; background: red; width: 50px; text-align: center;border-radius: 50px; color: white;}
+	</style>
+	<body>
+		<input type="text"  id="input"/>
+		<button id="bt1" onclick="clic('bt1')">左侧入</button>
+		<button id="bt2" onclick="clic('bt2')">右侧入</button>
+		<button id="bt3" onclick="clic('bt3')">左侧出</button>
+		<button id="bt4" onclick="clic('bt4')">右侧出</button>
+	</body>
+	<script>
+	 var main=document.body;
+	 var ul =document.createElement("ul")
+		main.appendChild(ul)
+		for(var i=0;i<6;i++){
+			var li=document.createElement("li")
+			li.innerHTML=i
+			ul.appendChild(li)
+		}
+	var  input=document.getElementById("input")
+	
+	function clic(btn){
+		
+   var btns=document.getElementById(btn)
+   var s=btns.getAttribute("id")
+  
+   clicks(s)
+		
+	}
+	function clicks(a){
+		if(a=="bt1"){
+		var tex=input.value
+		var lis=ul.childNodes[0]
+		var nli=document.createElement("li")
+		nli.innerHTML=tex
+		ul.insertBefore(nli,lis)
+		}
+	 if(a=="bt2"){
+		var tex=input.value
+		var nli=document.createElement("li")
+		nli.innerHTML=tex
+		ul.appendChild(nli)
+		}
+	 if(a=="bt3"){
+	 var lis=ul.childNodes[0]
+		ul.removeChild(lis)
+		
+		}
+	 if(a=="bt4"){
+		 var lis=ul.lastChild
+		ul.removeChild(lis)
+		}
+	}
+	/*var lis=ul.childNodes[1]
+	lis.onclick=function(){
+		alert("a")
+	}*/
+	</script>
+</html>
