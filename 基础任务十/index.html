@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+	  @media  screen and (max-width:650px) {
+        .wrap{
+        display: flex;
+        flex-flow: row wrap; align-items: flex-start;justify-content:  space-between
+      }  
+        .wrap div:nth-child(1){order: 1;}
+		.wrap div:nth-child(2){order: 2;}
+		.wrap div:nth-child(3){order: 3;}
+		.wrap div:nth-child(4){order: 0;} 
+    } 
+		.wrap{ 
+		display: flex; width: 100%; border: solid 1px black; padding: 20px 20px; 
+		flex-direction: row;justify-content: space-between; align-items: center;}
+		.wrap div{width: 150PX; border: solid 1PX red;
+		}
+		.wrap div:nth-child(1){height:120PX ;}
+		.wrap div:nth-child(2){height:100PX ;}
+		.wrap div:nth-child(3){height:40PX ;}
+		.wrap div:nth-child(4){height:200PX;}
+	</style>
+	<body>
+		<div class="wrap">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</body>
+</html>
