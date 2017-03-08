@@ -1,16 +1,56 @@
 window.onload=function(){
-	var text=[]
-text[0]='{-webkit-transition: all .3s;transition: all .3s;}'+
-'#show{ position:absolute;width:400px ; height:auto;background: blanchedalmond; top: 6%; left:56%;overflow: auto;box-shadow: 5px 5px 4px coral; border-radius: 50px; line-height: 30px;}'+
-'#box{background: rgb(0,43,54);color: rgb(222,222,222); }'+
-'#box{padding:20px; border:1px solid;overflow:auto;width:50%;height:auto;line-height: 30px;border-radius: 50px;}'+
-'html{ -webkit-perspective: 1000px;perspective: 1000px;}'+
-'#box{position:fixed;left:2%;top:2%; -webkit-transition: none;  transition: none; -webkit-transform: rotateY(10deg) translateZ(-100px) ;transform: rotateY(10deg) translateZ(-100px);font-family: "微软雅黑";}'+
-'p{color:red}'
+var textn=
+ `/*创建盒子。。。*/
+#show
+{
+ position:absolute;
+ width:400px ;height:600px;background: blanchedalmond;
+ color: cadetblue;
+ top: 6%; left:56%;overflow: auto;
+ box-shadow: 5px 5px 4px coral;
+ font-family: "微软雅黑";
+ border-radius: 50px;
+ line-height: 15px;}
+/* 首先给所有元素加上过渡效果 */
+* {
+ -webkit-transition: all .3s;
+ transition: all .3s;
+}
+/* 白色背景太单调了，我们来点背景 */
+html {
+   background: rgb(0,43,54); 
+}
+/* 文字离边框太近了 */
+ #box{
+  padding:20px;
+  border: 1px solid;
+  margin: .5em;
+  overflow: auto;
+  width:50%; height:auto;
+  line-height: 30px;
+  border-radius: 50px;
+  color: rgb(222,222,222);
+}
+/* 加点 3D 效果呗 */
+html{
+  -webkit-perspective: 1000px;
+   perspective: 1000px;
+}
+#box{
+  position: fixed; left: 0; top: 0; 
+  font-family: "微软雅黑";
+  -webkit-transition: none; 
+  transition: none;
+ -webkit-transform: rotateY(10deg) translateZ(-100px) ;
+  transform: rotateY(10deg) translateZ(-100px) ;
+}
+/*特点要着重显示*/
+p{ color:red}
+`
 	
 	
 	
-text[1]='Hello My name is 王港</br> 年龄：20岁</br> 性别：男</br>现为一名大二程序猿,为人风趣幽默、待人友善、知节知理、</br>'+
+var texts='Hello My name is 王港</br> 年龄：20岁</br> 性别：男</br>现为一名大二程序猿,为人风趣幽默、待人友善、知节知理、</br>'+
 	'技能：熟练CSS、Htlm 会市面上主流的布局方法，有过bootstrap等第三方框架的经验，对Jqurey使用熟悉、对原生JS有中等水平。接触过Vue.js 浅知Node.js</br>有过微信小程序的开发体验'+
 	'<p>特长：王者荣耀贼六！顺风浪 逆风投。主玩刺客 和法师  ID：手Q劣人Online_ 欢迎Boss切磋</p></br>'+
 	'校园经历：在大一有过多种校外兼职经历，有一定的社会经验，在上学期成为耳语APP校园大使  宣传并建立本校在耳语上的站点，有一定的推广经验。</br>'+
@@ -22,9 +62,9 @@ text[1]='Hello My name is 王港</br> 年龄：20岁</br> 性别：男</br>现�
 	
 	var n=0	
    var time=setInterval(function(){
-	    box.innerHTML=text[1].substring(0,n)
+	    box.innerHTML=texts.substring(0,n)
 	 
-	  if(n==text[1].length){
+	  if(n==texts.length){
 	  	clearInterval(time)
 	  	creat()
 	  	n=0
@@ -35,13 +75,13 @@ text[1]='Hello My name is 王港</br> 年龄：20岁</br> 性别：男</br>现�
 	},50)
 
 
-function creat(){
+function creat(){ 
 show.style.display='block';
 	var times=setInterval(function(){
-	    show.innerHTML=text[0].substring(0,n)
-	    style.innerHTML=text[0].substring(0,n)
+	    pre.innerHTML=textn.substring(0,n)
+	    style.innerHTML=textn.substring(0,n)
 	 
-	  if(n==text[0].length){
+	  if(n==textn.length){
 	  	clearInterval(times)
 	  	showimg()
 	  }
