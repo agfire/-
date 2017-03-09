@@ -23,7 +23,7 @@
       position: relative;
       width: 200px;
       margin: 15% auto;
-      -webkit-transform-origin: center center;
+     
       -webkit-transform-style: preserve-3d;
      -webkit-animation: cube-spin 12s 24s infinite ease-in;
       -moz-transform-style: preserve-3d;
@@ -55,7 +55,7 @@
    
     .cube:hover .bottom-pane{background: black;}
  .cube .front-pane{
- 	-webkit-animation:cubfont 4s infinite;
+ 	-webkit-animation:cubfont 4s;
     -webkit-transform: translateZ(100px);
  }	
  @-webkit-keyframes cubfont{
@@ -66,7 +66,7 @@
 	
 	-webkit-transform-origin: bottom right;
 	-webkit-transform:rotateY(-90deg) translateX(100px);
-	-webkit-animation: cubright 4s 4s infinite;
+	-webkit-animation: cubright 4s 4s;
 	
 }
 @-webkit-keyframes cubright{
@@ -76,7 +76,7 @@
  .cube .back-pane{
 
  	-webkit-transform: translateZ(-100px) rotateY(-180deg);
-    -webkit-animation: cubback 4s 8s infinite;
+    -webkit-animation: cubback 4s 8s;
  }
  @-webkit-keyframes cubback{
  	from{-webkit-transform: translateZ(-10px) rotateY(-90deg);}
@@ -85,7 +85,7 @@
  .cube .left-pane{
  	-webkit-transform-origin:left bottom;
  	-webkit-transform: rotateY(90deg) translateX(-100px);
- 	-webkit-animation: cubleft 4s 12s infinite;
+ 	-webkit-animation: cubleft 4s 12s;
  }
  @-webkit-keyframes cubleft{
 		from{-webkit-transform-origin: left bottom; -webkit-transform:rotateY(-0deg) translateX(0px);}
@@ -94,7 +94,7 @@
 	.cube .bottom-pane{
 		-webkit-transform-origin: bottom center;
 		-webkit-transform: rotateX(-90deg)translateY(100px);;
-		-webkit-animation: cubbottm 4s 16s infinite;
+		-webkit-animation: cubbottm 4s 16s;
 	
 	}
 	@-webkit-keyframes cubbottm{
@@ -105,7 +105,7 @@
 	.cube .top-pane{
 		-webkit-transform-origin: top center;
 		-webkit-transform: rotateX(90deg)translateY(-100px);
-		-webkit-animation: cubtop 4s 20s infinite;
+		-webkit-animation: cubtop 4s 20s;
 		
 	}
 	@-webkit-keyframes cubtop{
