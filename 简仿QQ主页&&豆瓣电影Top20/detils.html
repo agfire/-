@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1">
+		<script src="js/jquery-3.0.0.js"></script>
+		<style>
+			header{ background: #91C798; height: 50px; width: 100%;display: flex;justify-content: center; align-items: center; font-family: "微软雅黑";color: #379B46;}
+			.imgs{ position: absolute; top: 50%;left: 56%; width: 350px;height: 480px; background:url() ; margin-left: -175px; margin-top: -300px;}
+			#conten{ position: absolute;top: 75%;left: 25%;}
+			#conten2{ position: absolute;top: 85%;left:5%; margin-top: -20px;}
+			#conten3{position: absolute;top: 96%;left:2%;}
+			textarea{ font-family: "微软雅黑";font-size: 20px;}
+		</style>
+	</head>
+	<body>
+		<header>电影*豆瓣</header>
+		<div class="imgs">
+		</div>
+		<div id="conten">
+			<h4>加载中</h4>
+			
+		</div>
+		<div id="conten2">
+				<p>加载中。。。</p>
+				<p>加载中。。。</p>
+				<p>加载中。。。</p>
+			</div>
+		<div id="conten3">
+			<h3>摘要：</h3>
+			<textarea cols="5" rows="50" style="width: 380px; height: 150px;">加载中</textarea>
+		</div>
+	</body>
+	<script>
+		
+		window.onload=function(){
+			add()
+		}
+		
+	 function add(){
+		var itm=sessionStorage.getItem('id')
+	    var urls="https://api.douban.com/v2/movie/subject/"+itm
+		console.log(urls)
+		$.ajax({
+			type:"get",
+			async:false,
+			url:urls,
+		    dataType:"jsonp",
+			jsonp:"callback",
+			success:function(data){
+				console.log(data)
+				$(".imgs").css("background","url("+data.images.large+")no-repeat");
+				$("#conten h4").text(""+data.title+"")
+				$("#conten2 p").eq(0).text("评分"+data.rating.average+"")
+				$("#conten2 p").eq(1).text("导演:"+data.directors[0].name+"")
+				
+				if(data.casts[1].name===undefined){
+				$("#conten2 p").eq(2).text("主演:"+data.casts[0].name+"")
+				}
+			   else{
+			   	$("#conten2 p").eq(2).text("主演:"+data.casts[0].name+","+data.casts[1].name+"")
+			   }
+				$("#conten3 textarea").val(""+data.summary+"")
+			},
+		    eerror:function(){
+		    	alert("请求错误")
+		    }
+		
+		    
+		});
+	}
+	
+	
+		
+		
+	</script>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>高仿QQ界面</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1">
+		<script src="js/jquery1.10.2.js"></script>
+		<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css">
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+	</head> 
+	<style>
+		@media screen and (min-width:1000px ) {
+		.boxcent{ 
+	     margin-top:2%;margin-left: 50%; width:100px; color: white;}
+		 
+		 .box3{ 
+		 	top:2rem;
+		 	}
+		}
+		.head{background: rgb(18,183,246);}
+		.head img{border-radius: 50px; width: 8%; margin-top: 1.2%; margin-bottom: 1%;}
+		.boxcent{
+		 margin-left: 40%; width:100px; color: white;
+		 position: absolute; top:1rem;
+		 border-radius: 50px; border: solid 1px white;
+		 float: right;
+		 }
+		.boxcent div:nth-child(1){ float: left; color:rgb(18,183,246); background: white; margin-left: 20px; border-radius: 10px; border: solid 1px white}
+		.boxcent div:nth-child(2){ border-radius: 10px; border: solid 1px white;}
+		#box3{ background:url(图片/obs.png) no-repeat;background-size: 100% 100%;width:70px;height:40px;position: absolute; right: 4%; top: 0.1rem;}
+		.a1{ position: absolute; left:0.5%; top:8%; -webkit-transform: scale(1.2);visibility:visible; opacity: 0;}
+		.ui-content{ padding: 0.5rem 0.5rem 0px 0.5rem ; position: relative;}
+		.serch{ margin-top: 2rem;}
+	    .list{margin-top: 16px; display:flex; flex-direction: column;}
+	    .list li{background: rgb(217,212,208); font-family: "微软雅黑"; position: relative;}
+	    
+	    .list li div{ display: inline;margin-left: 20px;}
+	    .list li div:nth-child(2){position: absolute;top: 25px;}
+	    .list li div:nth-child(3){color:darkgray; font-size:0.8rem;}
+	    .list li div:nth-child(4){position: absolute;top: 25px; right: 5%;}/*30*/
+	    .list li div:nth-child(5){position: absolute;top: 50px; right: 5%; width: 30px; color: white;background: red;text-align: center; border-radius: 20px;font-size: 0.8rem;}
+	    .list li div:nth-child(6){position: absolute;top: 25px; right: -45%;}
+	    .list li div:nth-child(6) table tr td{width: 50px; height: 50px; color: white;}
+	    .list li div:nth-child(6) table tr td:nth-child(1){background: gainsboro; text-align: center;}
+	    .list li div:nth-child(6) table tr td:nth-child(2){background: orange; text-align: center;}
+	    .list li div:nth-child(6) table tr td:nth-child(3){background: red; text-align: center;}
+	    .list img{ border-radius:100px; margin-left: 20px; margin-top: 20px; -webkit-transform: scale(1.5);}
+	    .foot{ height: 3rem; display: flex; justify-content: space-between; align-items: flex-start}
+	    .foot div{ position: absolute; -webkit-transform: scale(0.5); left: 30px;}
+	    .foot a{height:80px; -webkit-transform: scale(0.4); margin-top: -1.32rem; width: 50px; background-position: -5px -7px;}
+	    .foot a:nth-child(2){background: url(图片/nro.png) no-repeat;}
+	    .foot a:nth-child(3){ background:url(图片/豆瓣.png)no-repeat;-webkit-transform: scale(0.6);background-position: 10px 20px;}
+	    .foot a:nth-child(2) div{ margin-top: 4.2rem; margin-left: -5px; font-size: 20px; color: rgb(18,183,246); -webkit-transform: scale(1.2);}
+	    .foot a:nth-child(3) div{ margin-top: 3.5rem;-webkit-transform: scale(1.2); color:burlywood;margin-left: -12px;}
+	    .foot a:nth-child(4){ background: url(图片/搜索.png)no-repeat; -webkit-transform: scale(0.6);margin-top: -1rem;background-position: 8px 10px;}
+	    .foot a:nth-child(4) div{ margin-top: 3rem;-webkit-transform: scale(1.2); color:burlywood;margin-left: -12px;}
+	    .lists{ width: 200px; position: absolute; top: -6rem;left: 60%; -webkit-transform: scale(0.05); background: white;display:none;}
+	    .lists img {-webkit-transform: scale(0.8);}
+	    .lists{ font-family: "微软雅黑";}
+	    .lists tr{margin-left: 5px;}
+	    #myPanel div:nth-child(1){ width:100%; height: 300px; background-image:url(图片/t01bc91b0ad85ce074d.gif); opacity:0.8;}
+	    #myPanel div:nth-child(2){ margin-top: 10px; -webkit-transform: scale(0.8); font-family:  "微软雅黑"; margin-left: -20px;}
+	    #myPanel div:nth-child(2) table tr:nth-child(2) img{-webkit-transform: scale(0.5); margin-left: -29px;}
+	    .show{
+	    width:110px; height: 120px; position:absolute;background: url(图片/qix.png)no-repeat;border-radius: 50px;
+		top: 50%; left: 50%; margin-left: -50px;
+		-webkit-animation: change ease 4s infinite alternate;
+		}
+		
+	@-webkit-keyframes change{
+		from{-webkit-transform: rotateZ(0deg) scale(0.1);}
+		to{-webkit-transform: rotateZ(360deg) scale(1);}
+	}
+	
+	  header{ background: #91C798; height: 80px; width: 100%;display: flex;justify-content: center; align-items: center; font-family: "微软雅黑";color: #379B46;}
+		
+		#show ul {list-style: none; padding: 0px; width: 100%; position: relative;}
+	   .show-div{ display: inline-block; margin-left: 20px;}
+	   .show-div div{ margin-top: 20px;}
+	   #show .stat{position: absolute; right: 6%; top: 12%;color: red;}
+	   #show ul li a div{ display: none;}
+	   
+	   #showe ul {list-style: none; padding: 0px; width: 100%; position: relative;}
+	   .show-div{ display: inline-block; margin-left: 20px;}
+	   .show-div div{ margin-top: 20px;}
+	   #showe .stat{position: absolute; right: 6%; top: 12%;color: red;}
+	   #showe ul li a div{ display: none;}
+	</style>
+	<body>
+		
+<div data-role="page" id="pageone">
+  <a href="#pagetwo" data-transition="slide"> <div class="show"></div></a>
+</div> 
+		
+<div data-role="page" id="pagetwo">
+	
+	<div data-role = "header" class="head " data-theme="a" data-position="fixed">
+			<div><img src="图片/头像.png"/></div>
+		<div class="boxcent"> 
+			<div>消息</div> 
+			<div>电话</div>
+		</div>
+	<div id="box3">
+		 
+	</div>
+	<div class="a1"><a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets ui-btn-icon-notext"></a></div>
+    </div>
+		
+	<div data-role="panel" id="myPanel"> 
+   <div></div>
+   <div><table>
+   	<tr><td><img src="图片/pji.png"/></td><td>了解会员特权</td></tr>
+   	<tr><td><img src="图片/mtu.png"/></td><td>QQ钱包</td></tr>
+   	<tr><td><img src="图片/pjh.png"/></td><td>个性装扮</td></tr>
+   	<tr><td><img src="图片/nlu.png"/></td><td>我的收藏</td></tr>
+   	<tr><td><img src="图片/omu.png"/></td><td>我的相册</td></tr>
+   	<tr><td><img src="图片/msr.png"/></td><td>我的文件</td></tr>
+   </table></div>
+  </div>
+  
+   <div data-role="main" class="ui-content">
+   	
+	<div class="serch">
+	 <form class="ui-filterable">
+      <input id="myFilter" data-type="search">
+    </form>
+		</div>
+	<div class="list" id="ul">
+	 <ul data-role="listview"data-filter="true" data-input="#myFilter" data-autodividers="true" data-inset="true">
+      <li><data-role="list-divider">
+      <img src="图片/列表 (1).png"/>
+      <div>无纸化考试项目组</div>
+      <div>无谓无味：vs team foundation server</div>
+      <div>下午2:10</div>
+      <div class="num">99+</div>
+      <div>
+      	<table><tr><td>置顶</td><td>标记已读</td><td>删除</td></tr></table>
+      </div>
+      </li>
+      <li><data-role="list-divider"><img src="图片/列表 (2).png"/>
+      <div>群消息</div>
+      <div>2条</div>
+      <div>下午2:10</div>
+      <div class="num"></div>
+      <div>
+      	<table><tr><td>置顶</td><td>标记已读</td><td>删除</td></tr></table>
+      </div>
+      </li>
+      <li><data-role="list-divider"><img src="图片/列表 (3).png"/>
+      <div>java1501</div>
+      <div>无谓无味：vs team foundation server</div>
+      <div>下午2:10</div>
+      <div class="num">99+</div>
+      <div>
+      	<table><tr><td>置顶</td><td>标记已读</td><td>删除</td></tr></table>
+      </div>
+      </li>
+      <li><data-role="list-divider"><img src="图片/列表 (4).png"/>
+      <div>前端爱好者</div>
+      <div>无谓无味：vs team foundation server</div>
+      <div>下午2:10</div>
+      <div class="num">99+</div>
+      <div>
+      	<table><tr><td>置顶</td><td>标记已读</td><td>删除</td></tr></table>
+      </div>
+      </li>
+      <li><data-role="list-divider"><img src="图片/列表 (5).png"/>
+      <div>信达便利群</div>
+      <div>无谓无味：vs team foundation server</div>
+      <div>下午2:10</div>
+      <div class="num"></div>
+      <div>
+      	<table><tr><td>置顶</td><td>标记已读</td><td>删除</td></tr></table>
+      </div>
+      </li>
+      <li><data-role="list-divider"><img src="图片/列表 (6).png"/>
+      <div>哥</div>
+      <div>弟，在么</div>
+      <div>下午2:10</div>
+      <div class="num"></div>
+      <div>
+      	<table><tr><td>置顶</td><td>标记已读</td><td>删除</td></tr></table>
+      </div>
+      </li>
+
+    </ul>
+		</div>
+   
+   <div class="lists">
+   	<table>
+   		<tr><td><img src="图片/msg.png"/></td><td>创建群聊</td></tr>
+   		<tr><td><img src="图片/msf.png"/></td><td>扫一扫</td></tr>
+   	    <tr><td><img src="图片/msr.png"/></td><td>面对面快传</td></tr>
+   		<tr><td><img src="图片/nkv.png"/></td><td>拍照</td></tr>
+   		<tr><td><img src="图片/msg.png"/></td><td>创建群聊</td></tr>
+   		<tr><td><img src="图片/msg.png"/></td><td>创建群聊</td></tr>
+   		<tr><td><img src="图片/ngg.png"/></td><td>面对面红包</td></tr>
+   		
+   	</table>
+   </div>
+   
+  </div>
+  
+  <div data-role = "footer"data-position="fixed" class="foot">
+  	<div><img src="图片/skin_tips_newmessage_ninetynine.png"/></div>
+  	<a href="#pagetwo" data-transition="slidefade"><div>消息</div></a>
+  	<a href="#pagethree" data-transition="slidefade"><div>豆瓣电影</div></a>
+  	<a href="#pagefor" data-transition="slidefade"><div>搜索</div></a>
+  	
+  </div>
+  
+</div>
+
+<div data-role="page" id="pagethree">
+ 
+  <header>豆瓣电影Top250</header>
+  <div data-role="main" class="ui-content">
+    <div id="show">
+    	<h4>加载中。。。。</h4>
+    	</div>
+  </div>
+
+  <div data-role = "footer"data-position="fixed" class="foot">
+  	<div><img src="图片/skin_tips_newmessage_ninetynine.png"/></div>
+   <a href="#pagetwo" data-transition="slidefade"><div>消息</div></a>
+  	<a href="#pagethree" data-transition="slidefade"><div>豆瓣电影</div></a>
+  	<a href="#pagefor" data-transition="slidefade"><div>搜索</div></a>
+  	
+  </div>
+</div> 
+<div data-role="page" id="pagefor">
+	<header>豆瓣电影·查询</header>
+	<input id="inser" placeholder="请输入电影关键字如：宫崎骏"/>
+	<div data-role="main" class="ui-content">
+		<div id="showe">
+			
+		</div>
+	</div>
+	 <div data-role = "footer"data-position="fixed" class="foot">
+  	<div><img src="图片/skin_tips_newmessage_ninetynine.png"/></div>
+   <a href="#pagetwo" data-transition="slidefade"><div>消息</div></a>
+  	<a href="#pagethree" data-transition="slidefade"><div>豆瓣电影</div></a>
+  	<a href="#pagefor" data-transition="slidefade"><div>搜索</div></a>
+  	
+</div>
+</div> 
+</body>
+	<script>
+		 $(document).ready(function(){
+	$("#inser").blur(function(){
+	var shr=showe;
+	$("#showe").empty()	
+    var vas =$(this).val()
+	$.ajax({
+				type:"get",
+				async:false,
+				url:"https://api.douban.com/v2/movie/search?q="+vas,	
+				dataType:"jsonp",
+			    jsonp:"callback",
+			    success:function(data){
+			    var q=null;
+			    console.log(data)
+              shows(shr,data)
+      $("#showe ul li a").click(function(){
+	  q=$(this).find("div").text()
+	  
+	  window.location.href='http://127.0.0.1:8020/%E9%AB%98%E4%BB%BFQQ%E7%95%8C%E9%9D%A2/detils.html'
+	  window.sessionStorage.setItem("id",q)
+	 	 })
+	     },
+	  
+	 error:function(){
+			    	
+			    }
+
+	});
+	});
+	
+		
+		var a=0.05;
+		var timer=null
+	$("#box3").click(function(e){
+		console.log(a)
+		$(".lists").fadeToggle()
+	if(a<0.5000000000000002){
+	 timer=setInterval(function(){
+			a+=0.01
+		$(".lists").css("-webkit-transform","scale("+a+")");
+		if(a==0.5000000000000002){ 
+			 clearInterval(timer)
+			 a=0;
+		}
+		},5)
+		}
+	})
+var len=$(".list li").length
+ for(var i=0;i<len;i++){
+ $(".list li").eq(i).on("swipeleft",function(){
+ 	alert("a")
+   move($(this).index())
+  }); 
+$(".list li").eq(i).on("swiperight",function(){
+   moveright($(this).index())
+ });
+ 
+ $(".list li").eq(i).find("div").eq(3).on("taphold",function(){
+  	$(this).hide()
+  })
+ }
+                        
+ function move(inde){
+ $(".list li").eq(inde).css("margin-left","-100px")
+ $(".list li").eq(inde).find("div").eq(3).css("right","200px")
+ $(".list li").eq(inde).find("div").eq(4).css("right","-2%")
+ $(".list li").eq(inde).find("div").eq(2).css("right","200px")
+ }
+	
+function moveright(inde){
+ $(".list li").eq(inde).css("margin-left","0px")
+ $(".list li").eq(inde).find("div").eq(3).css("right","5%")
+ $(".list li").eq(inde).find("div").eq(4).css("right","-45%")
+ $(".list li").eq(inde).find("div").eq(2).css("right","5%")
+ }
+	
+	for(var b=0;b<len;b++){
+	!function(b){
+	$(".list li").eq(b).find("div").eq(4).find("td").eq(2).click(function(){
+	 removes(b)
+	})
+	}(b)
+	}
+	
+	function removes(b){
+	$(".list li").eq(b+1).remove()
+	}
+
+$("#pagetwo .foot a").eq(1).click(function(){
+	var shs=show
+	$.ajax({
+			type:"get", 
+			async:false,
+			url:"https://api.douban.com/v2/movie/top250",
+			dataType:"jsonp",
+			jsonp:"callback",
+			
+			success:function(data){ 
+				$("#show").empty()
+				var q=null;
+				console.log(data)
+				/*console.log(datas.title)
+				console.log(datas.subjects[0].casts[0].alt)
+			   	console.log(datas.subjects[0].alt) 详情页电影
+			  console.log(datas.subjects[0].images.large) 图片*/
+			 shows(shs,data)	
+		 $("#show ul li a").click(function(){
+	     q=$(this).find("div").text()
+	     window.location.href='http://127.0.0.1:8020/%E9%AB%98%E4%BB%BFQQ%E7%95%8C%E9%9D%A2/detils.html'
+	 	
+	 	 window.sessionStorage.setItem("id",q)
+	 	})	  
+		},
+			
+	      error:function(el,err){
+			alert(err)
+			}
+});
+})
+function shows(sh,data){
+ for(var w=0;w<data.count;w++){ 
+	var ul=document.createElement("ul");
+			 var li=document.createElement("li")
+		  var a=document.createElement("a")
+			//  a.setAttribute("href","detils.html")
+			  var img=document.createElement("img")
+			 if(data.subjects[w].images.medium===undefined){
+			 	img.setAttribute("src","图片/mtu.png");
+			 }
+			  else{
+			  	img.setAttribute("src",""+data.subjects[w].images.medium+"");
+			  }
+			
+			  var div=document.createElement("div")
+			  div.setAttribute("class","show-div")
+			  var div1=document.createElement("div")
+			  
+			  div1.innerHTML=data.subjects[w].title
+			  var div2=document.createElement("div")
+			  div2.innerHTML=data.subjects[w].original_title
+			  var div3=document.createElement("div")
+			  if(data.subjects[w].directors.length===0){
+			  	   div3.innerHTML="未知导演"
+			  }
+			else{ 
+			    div3.innerHTML=data.subjects[w].directors[0].name;
+			}
+			  var div4=document.createElement("div")
+			  div4.innerHTML=data.subjects[w].id
+			  var divs=document.createElement("div")
+			  divs.innerHTML=data.subjects[w].rating.average
+			  sh.appendChild(ul);
+			  ul.appendChild(li)
+			  li.appendChild(a)
+			  a.appendChild(img)
+			  li.appendChild(div)
+			  div.appendChild(div1)
+			  div.appendChild(div2)
+			  div.appendChild(div3)
+			  a.appendChild(div4)
+			  divs.setAttribute("class","stat")
+			  li.appendChild(divs)
+           }
+		}
+	
+})
+	</script>
+</html>
