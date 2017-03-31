@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件练习</title>
+	<script src="js/index.js">
+	</script>
+		<style>
+  .dialog{
+  position: fixed;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 0px 10000px rgba(0,0,0,0.2);
+  min-width: 16em;
+}
+
+.dialog > header{
+  padding: .5em;
+  border-bottom: 1px solid #ddd;
+}
+.dialog > header button{
+	margin-left:16em;
+}
+.dialog > main{
+  padding: 1em .5em;
+}
+
+.dialog > footer{
+  border-top: 1px solid #ddd;
+  text-align: right;
+  padding: .3em .5em;
+}
+input:nth-child(2){
+	width: 20em;
+	height: 4em;
+}
+		</style>
+	</head>
+	<body>
+		<input  placeholder="请输入标题" type="text"/>
+		<input  placeholder="内容" type="text"/>
+		<input placeholder="请输入宽度大小:默认16em" type="text"/>
+		<button id="but">点击打开对话框</button>
+	</body>
+	
+	
+</html> 
