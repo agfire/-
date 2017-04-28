@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>班级管理</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1">
+		<script type="text/javascript" src="js/jquery-3.0.0.js" ></script>
+		<script src="js/class.js"></script>
+		<script type="text/javascript" src="js/regist.js" ></script>
+	</head>
+	<style>
+		ul li{ list-style: none;}
+		html{font-size: 24px;}
+		*{ margin: 0px;} 
+		header{ 
+		 width:100%;height: 2rem; background: #91C798; text-align: center;
+		 padding-top: 1rem; font-family: "微软雅黑";
+		 color: white;
+		 -webkit-animation: change 5s ease-in-out infinite;
+		 }
+		@-webkit-keyframes change{
+			from{background: #91C798;}
+			20%{background: #7d9080;}
+			40%{background: #686d69;}
+			60%{background: #568a79;}
+			80%{background: #6cc7aa;}
+		    100%{background: #91C798;}
+		} 
+	.list{ display: flex; justify-content:center;align-items: center;}
+	.list ul{display: flex; list-style: none; margin-top: 50px;}
+	.list ul li:nth-child(1){margin-left: -35px;}
+	.list ul li:nth-child(2) button{ background: #6CC7AA;}
+	.list ul li:nth-child(3) button{ color:white;border-radius: 50px; margin-left: 50px; background: cadetblue;box-shadow: #568A79 1px 1px 6px 4px; }
+	
+	#serch{ width: 50%; margin: 0 auto;background: #6CC7AA; margin-left: 80px; display: none;}
+	.top{
+	width: 0px;
+	height: 0px;
+	border-top: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #6CC7AA;
+    margin-top: 15px;
+    margin-left: -106px;
+    display: none;
+	}
+	.student{ margin-top: 20px;}
+	.student table td{ color: #568A79; font-family: "微软雅黑"; font-size:36px;}
+	.student table{ width: 100%;}
+	.student table tr:nth-child(1){ display: none;}
+	.student table tr td:nth-child(1) img{width:150px;height: 150px;background-size: 100% 100%;}
+	.student table tr:nth-child(1) td:nth-child(1) img{background-image:url(img/image1.jpg);}
+	.dialog{
+  position: fixed;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 0px 10000px rgba(0,0,0,0.2);
+  min-width: 16em;
+  display: none;
+}
+.dialogs{
+  position: fixed;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 0px 10000px rgba(0,0,0,0.9);
+  min-width: 16em;
+  display: none;
+  }
+ .but,.buts{ border-radius: 10px; background: cadetblue; color: white;}
+ #canvas{z-index: -10000;opacity: 0.5;}
+ header{z-index:3;}
+ .list{z-index: 3;}
+ #serch{z-index: 3;}
+ .student{z-index: 3;}
+		</style>
+	<body>
+	<div id="loginbg" style="overflow: hidden; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: -1; display: block; background-image: url(https://www.mengkedu.com/resources/images/bg/85.jpg); background-size: cover;">
+	<canvas id="canvas" width="2000px" height="2000px"></canvas>
+</div>
+		<header>
+			班级信息管理 
+		</header>
+	
+		<div class="list">
+			<ul>
+				<li><button>添加学生</button></li>
+				<li><button>查询学生</button></li>
+				<li><button>G o !</button></li>
+				<div class="top"></div>
+			</ul>
+		</div>
+		
+		<div id="serch">
+				<input  placeholder="请输入学生姓名" />
+				<button class="buts">恢复</button>
+		</div>
+	<div class="student">
+		<table>
+			<tr>
+				<td><img></td>
+				<td>某人</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><img src="img/image15.jpg"></td>
+				<td class="gettext">某人</td>
+				<td>55</td>
+				<td><ul><li><button class="but">x</button></li><li><button class="but">修改</button></li></ul></td>
+			</tr>
+			
+		</table>
+	</div>
+	<div class="dialog">
+	<table>
+		<tr>
+			<td>请输入姓名：</td>
+			<td><input placeholder="姓名"></td>
+		</tr>
+		<tr>
+			<td>学号</td>
+			<td><input placeholder="学号"></td>
+		</tr>
+		<tr>
+			<td>请选择学号所代表的图片</td>
+			<td colspan="2">
+				<select>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</select>
+			</td>
+		</tr
+	  <tr>
+			<td></td>
+			<td colspan="2"><button class="true">确认</button><button class="rest">重置</button></td>
+		</tr>
+	
+	</table>
+	
+	</div>
+	<div class="dialogs"></div>
+	</body>
+	
+</html>
+<script>
+	var clasmaner={
+	     
+	   init:function(){
+		this.img=$(".student table tr td").eq(0).children("img")
+		this.td=document.querySelector(".student tr td:nth-child(2)")
+		this.data=[] 
+		this.namedata=["王港","hff","rrr","fe","drt","irt","eitt","wqirur","dwyr","swiur","ew7r","王港","hff","rrr","fe","drt","irt","eitt","wqirur","dwyr","swiur",]
+		this.i=0
+		for(let i=0;i<21;i++){
+		this.data.push({img:"img/image"+i+".jpg",name:""+this.namedata[i]+""})
+		}
+  
+		},
+	 setInterstart:function(){ 
+	    this.rand=parseInt(Math.random()*19,10)+1
+	    console.log("判断什么时候停止的随机"+this.rand)
+	 	var _this=this
+	    var timer=setInterval(function(){
+	    //img.css("background","url("+data[i].img+")")
+    	//img.style.background="url("+data[i].img+")"
+        //img.style.backgroundSize="100% 100%" 
+		//img.setAttribute("src",data[i].img)
+	 _this.img.attr("src",""+_this.data[_this.i].img+"")
+			_this.td.innerHTML=_this.data[_this.i].name
+			_this.i+=1
+		if(_this.i===20){
+			_this.i=0
+		}
+		if(_this.i===_this.rand){ 
+			clearInterval(timer)
+			_this.setTimesatar()
+			}
+		
+	    },200)
+	    
+	 },
+	 bind:function(){
+	 _this=this
+   
+   $(".list li").eq(2).click(function(){
+   $(".student table tr").eq(0).toggle()
+   var f= $(".student table tr").eq(0).css("display")
+    if(f==='table-row'){
+       _this.setInterstart()	
+    }
+    else{
+    	//clearInterval(timer)
+    }
+
+   	
+   })
+   $(".list li").eq(1).click(function(){
+   	    $(".top").toggle()
+    	$("#serch").fadeToggle()
+    })
+    $("#serch input").blur(function(){
+    _this.tdtext=[]
+     $(".gettext").each(function(){
+		_this.tdtext.push($(this).text())
+		
+	})
+	
+		
+	_this.findserch()
+	
+    })
+	$(".list li").eq(0).click(function(){
+   	    $(".dialog").toggle()
+    	
+    })
+	$(".true").click(function(){
+	var oimg=$(".dialog table tr").eq(2).find("td").eq(1).children("select").val()
+	
+	var name=$(".dialog table tr").eq(0).find("td").eq(1).children("input").val()
+	
+	var num=$(".dialog table tr").eq(1).find("td").eq(1).children("input").val()
+		var s=$("<tr><td><img src=img/image"+oimg+".jpg></td><td class=gettext>"+name+"</td><td>"+num+"</td><td><ul><li><button class=but>x</button></li><li><button class=but>修改</button></li></ul></td></tr>")
+		$(".student table").append(s)
+		 $(".dialog").toggle()
+	 $(".but").click(function(){
+	$(this).parent().parent().parent().parent().remove()
+	})
+	
+	})
+	
+	$(".rest").click(function(){
+		var name=$(".dialog table tr").eq(0).find("td").eq(1).children("input")
+	  name.val("")
+		var num=$(".dialog table tr").eq(1).find("td").eq(1).children("input")
+		num.val("")
+	})
+	
+	$("#serch .buts").click(function(){
+		$(".student table tr").eq(0).siblings().css("visibility","visible")
+	})
+	 },
+	findserch:function(){
+		
+	var inval=$("#serch input").val()
+	this.tdtext.forEach(function(val,index){
+		if(inval===val){
+			$(".student table tr").eq(index+1).siblings().css("visibility","hidden")
+		
+		}
+	})
+	},
+	setTimesatar:function(){
+	var s=this.rand+parseInt(Math.random()*100,10)
+	if(s%2===0){
+	 setTimeout(function(){
+	 	 $(".dialogs").fadeIn()
+	 },3000)
+	 var rands=parseInt(Math.random()*20,10)
+	 console.log("这是改变img的"+rands)
+	 setTimeout(function(){
+	 	$(".dialogs").fadeOut()
+	 	 _this.img.attr("src","img/image"+rands+".jpg")
+	 	 _this.td.innerHTML=_this.data[rands].name
+	 	 
+	 },5000)
+	 
+	}
+		
+	},
+	
+ 
+	}
+	
+	 $(".but").click(function(){
+		 $(this).parent().parent().parent().parent().remove()
+	})
+		
+		var clas={}
+		clas.__proto__= clasmaner
+		clas.init()
+		clas.bind()
+		
+	</script> 

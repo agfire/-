@@ -43,6 +43,7 @@
 <script>
 function Dialog(options) {
   this.options = options
+  this.name="wf"
   this._prepareHtml()
   this._bindEvents()
   this._mount()
@@ -50,6 +51,8 @@ function Dialog(options) {
 }
 
 Dialog.prototype._bindEvents = function() {
+	var _this=this
+	alert(_this.name)
   var div = this.div
   var buttonCallbacks = this.options.buttonCallbacks
   
@@ -121,5 +124,5 @@ xxx.onclick = function() {
 
 }
 
-}
+
 </script>

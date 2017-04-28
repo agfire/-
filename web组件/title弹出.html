@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.title{
+			text-decoration: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			
+		} 
+   .title .title_div{
+	    background:lightgoldenrodyellow;
+		font-size: 18px;
+		width: 200px;
+		height: auto;
+		overflow: auto;
+		display: none;
+	
+		position: absolute;
+	}
+	.title:hover .top,.title:hover .title_div{
+		display: block; 	
+		text-align: center;
+	}
+	.title_div_top{top: -30px;}
+	.title_div_right{left: 25px;}
+	
+	
+	.top{
+	width: 0px;
+	height: 0px;
+	border-top: 10px solid lightgoldenrodyellow;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+    margin-top: -30px;
+    display: none;
+	}
+	</style>
+	<body>
+		<a class="title" href="#">查看
+		<div class="top"></div>	
+		<div class="title_div title_div_top ">hahh</div>
+		</a>
+		
+	
+	</body>
+</html>

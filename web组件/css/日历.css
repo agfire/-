@@ -1,0 +1,30 @@
+.data{position: relative;}
+		.header{background: red; width: 220px; display: flex; flex-direction: row; justify-content: space-between;align-items: center; margin-left: 15px;}
+	    .header .arrow-left{
+	width: 0px;
+	height: 0px;
+	border-top: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-right: 10px solid white;
+	border-bottom: 10px solid transparent;
+		}
+	.header .arrow-right{
+	width: 0px;
+	height: 0px;
+	border-top: 10px solid transparent;
+	border-left: 10px solid white;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	}	
+	.main{color: white; font-family: "微软雅黑";}
+	.mian--content{ margin-left: 15px; padding-left: 10px;}
+	.mian--content table tr td{padding-left: 10px; text-align: center;}
+	.mian--content td:hover{ background:tomato; font-size: 16px; border-radius: 10px; color: white;-webkit-transform: scale(1.2);}
+	.bule{color: white; -webkit-animation:change 1s ease-in-out infinite;background: tomato;border-radius: 10px;}
+	@-webkit-keyframes change{
+		0%{-webkit-transform: scale(0.5);color: white;}
+		25%{-webkit-transform: scale(1);color: white;}
+	    50%{-webkit-transform: scale(1.35);color: white;}
+	    75%{-webkit-transform: scale(1.2);color: white;}
+		100%{-webkit-transform: scale(1.5);color: white;}
+	}
