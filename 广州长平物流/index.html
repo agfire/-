@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>广州长平物流</title>
+		
+		
+        <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+      <script src="lib/jquery-1.8.3.min.js"></script>
+      <script src="lib/jquery.liMarquee.js"></script>
+          
+		<script src="lib/vue.min.js"></script>
+		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	</head>
+	   <style type="text/css">
+	   	html,body{
+	   		margin: 0px;
+	   		font-size:18px;
+	   	}
+	   	 #app{
+	   	 width: 100%;
+	   	 height: auto;
+	   	 }
+	   	 ._header{
+	   	 	height: 100px;
+	   	 	display: flex;
+	   	 	flex-direction: row;
+	   	 	background: #f1efef;
+	   	 	justify-content:space-around;
+	   	 	align-items: center;
+	   	 }
+	   	 ._header #img img{
+	   	 	border-radius: 50px;
+	   	 	-webkit-animation:change 6s linear infinite alternate
+	   	 }
+	   	 #list{
+	   	 	display: inline-block;
+	   	 	width: auto;
+	   	 }
+	   	.dropbtn {
+    background-color:#9e9e9ea1;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+	   	@-webkit-keyframes change{
+		0%{transform: rotateZ(0deg), transform: scale(1);}
+		10%{transform: scale(0.8)}
+		20%{transform: scale(0.5)}
+		40%{transform: scale(0.8)}
+		60%{transform: scale(1.0)}
+		80%{transform: scale(1.2)}
+		100%{transform: rotateZ(360deg)}
+	}
+	   
+	   #content{
+	   	width: 100%;
+	   	height: 500px;
+	   	position: relative;
+	   	perspective: 1000px;
+	   	margin-top: 70px;
+	   }
+	   #content #imgbox{
+	   	 transform-style: preserve-3d;
+	     top: 50px;
+	     left: 25%;
+	     width: 100%;
+	   	 height: 450px;
+	   	 position: absolute;
+	   }
+	.t_left{
+       width:0px;
+       height:0px;
+       border:50px solid;
+       overflow: hidden;
+       border-color:transparent transparent  slategray transparent ;
+       
+       margin-left: 100px;
+       transform: rotate(90deg);
+       position: absolute;
+       cursor: pointer;
+       top:205px;
+       
+	   }
+	 
+	   .t_right{
+	   	width:0px;
+       height:0px;
+       border:50px solid;
+       overflow: hidden;
+       border-color:transparent transparent  slategray transparent ;
+       right: 100px;
+       transform: rotate(270deg);
+       position: absolute;
+       cursor: pointer;
+       top:205px;
+	   }
+	     .t_left:hover{
+	   	box-shadow: 0px 3px 0px navajowhite;
+	   }
+	   .t_right:hover{
+	   		box-shadow: 0px 3px 0px navajowhite;
+	   }
+	   #content img{
+	   	width: 950px;
+	   	height: 100%;
+	  	position: absolute;
+	   transform-style: preserve-3d;
+	   }
+	#content img:nth-child(1) {  transform: translateZ(55px) translateX(0px); }
+	#content img:nth-child(2) {   transform: translateZ(0px) translateX(-170px);}
+	#content img:nth-child(3) {   transform: translateZ(0px) translateX(170px);}
+   @-webkit-keyframes moves1{
+   	0%{transform: translateZ(55px) translateX(0px);opacity: 1;}
+   	30%{transform: translatez(0px) translatex(-170px);opacity: 0.5;}
+   	65%{transform: translatez(0px) translatex(170px);opacity: 0.5;}
+   	100%{transform: translatez(55px)translatex(0px);opacity: 1;}
+   }
+	 @-webkit-keyframes moves2{
+    0%{transform: translateZ(0px) translateX(-170px);opacity: 0.5;}
+   	30%{transform: translatez(0px) translatex(170px);opacity: 0.5;}
+   	65%{transform: translatez(55px) translatex(0px);opacity: 1;}
+   	100%{transform: translatez(0px) translatex(-170px);opacity: 1;}
+   }
+	 @-webkit-keyframes moves3{
+    0%{transform: translateZ(0px) translateX(170px);opacity: 0.5;}
+   	30%{transform: translatez(55px) translatex(0px);opacity: 1;}
+   	65%{transform: translatez(0px) translatex(-170px);opacity: 0.5;}
+   	100%{transform: translatez(0px) translatex(170px);opacity: 1;}
+   }
+	    
+	 
+      .content_left{
+      	width: 250px;
+      	height: 200px;
+      	background:#ffc1077d;
+      	margin-left: 2%;
+        border-radius: 50px;
+      }    
+ .content_left p:nth-child(1){
+ 	     background: linear-gradient(to right, red, blue);
+        -webkit-background-clip: text;
+         color: transparent;
+         
+ }
+ .content_left p:nth-child(2){
+ 	      
+ 	      background: linear-gradient(to right, red, pink);
+        -webkit-background-clip: text;
+         color: transparent;
+ }
+ .content_left p:nth-child(3){
+ 	     background: linear-gradient(to right, red, darkseagreen);
+        -webkit-background-clip: text;
+         color: transparent;
+ }
+ .content_left p:nth-child(4){
+ 	     background: linear-gradient(to right, red, green);
+        -webkit-background-clip: text;
+         color: transparent;
+ }
+ .content_list{
+ 	margin-left: 40%;
+ 	margin-top: 5%;
+ }
+ .content_list a{
+ 	text-decoration: none;
+ }
+ .template-content{
+ 	margin-left: 25%;
+ }
+ .temp_img{
+ 	display: inline-block;
+ }
+.temp_img span{
+	vertical-align: top;
+}
+
+.content_list a{font-size: 20px;color: gray;margin-left: 10px;}
+.template-content{
+	margin-top: 5%;
+}
+.content_foot{width:auto; height:200px;margin-top: 50px;}
+.content_foot ul {display: flex;justify-content:space-around;margin-top: 50px;}
+.content_foot span{  color: navajowhite; padding-left: 45%;background: linear-gradient(to right, blue, red); display: block;}
+.content_foot li{width: 200px;transition: all ease 1s }
+.content_foot ul li img{width: 200px;height: 150px;}
+.content_foot ul li p{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;cursor: pointer;}
+.content_foot ul li:hover{transform: scale(1.2);}
+footer{
+
+	width: 100%;
+	height: 200px;
+	margin-top: 150px;
+}
+.footer span{
+	font-size: 25px;
+	background: linear-gradient(to right, red, darkseagreen);
+	color: navajowhite;
+	padding-left: 45%;
+	display: block;
+	
+}
+.footer marquee {margin-top: 50px;}
+.footer img{width: 200px;height: 200px;margin-left: 150px; border-radius: 50px;}
+ 	 </style>
+	  
+	<body>
+		
+		<div id="app">
+		<header id="header" class="_header">
+		<div id="img">
+			<img src="img/text_副本.jpg" height="100px"/>
+		</div>
+	<div id="list">
+		<div class="dropdown" v-for="list in iyewu">
+			  <button class="dropbtn">{{list.title}}</button>
+			  <div class="dropdown-content">
+			    <a v-for="lists in list.data" v-if="lists" href="">{{lists}}</a>
+			    
+			  </div>
+        </div>
+	</div>
+		</header>
+
+	<div id="content" >
+		<span class="t_left"></span>
+		<div id="imgbox">
+			<img  src="img/素材1.jpg" />
+            <img  src="img/素材2.jpg" />
+			<img  src="img/素材3.jpg" />
+          
+		</div>
+     <span class="t_right"></span>
+	</div>
+	<div class="content_center">
+		<div class="content_list">
+       <router-link to="/foo">城市配送</router-link>
+	   <router-link to="/bar">仓储管理</router-link>
+	   <router-link to="/fang">增值服务</router-link>
+	   <router-link to="/fang">长河优势</router-link>
+	  </div>
+	   
+	   <router-view ></router-view>
+	 
+	   
+	   <div class="content_foot">
+	   	<span style="color: gray; font-size: 25px;">公司动态</span>
+	   	<ul>
+	   		<li style="list-style: none;">
+	   			<img src="img/IMG_0214(20170705-153909).jpg"  />
+	   			<p>xxxxxxxxxxxxxxxxxxxxxx</p>
+	   		</li>
+	   		<li style="list-style: none;">
+	   			<img src="img/IMG_0214(20170705-153909).jpg"  />
+	   			<p>xxxxxxxxxxxxxxxxxxxxxx</p>
+	   		</li>
+	   		<li style="list-style: none;">
+	   			<img src="img/text_副本.jpg"  />
+	   			<p>xxxxxxxxxxxxxxxxxxxxxx</p>
+	   		</li>
+	   		<li style="list-style: none;">
+	   			<img src="img/text_副本.jpg"  />
+	   			<p>xxxxxxxxxxxxxxxxxxxxxxx</p>
+	   		</li>
+	   	</ul>
+	   </div>
+	</div>
+		
+		<footer id="footer">
+			
+		<div class="footer">
+			<span>合作伙伴</span>
+			<marquee class="marquee" vspace="50" hspace="50"  direction="left" behavior="scroll" scrollamount="10" scrolldelay="100">
+				<img src="img/素材2.jpg" />
+				<img src="img/素材2.jpg" />
+				<img src="img/素材2.jpg" />
+				<img src="img/素材2.jpg" />
+				<img src="img/素材2.jpg" />
+			</marquee>
+		</div>
+		
+		</footer>
+		
+		</div>
+
+	</body>
+	<script>
+	
+var Foo=Vue.component('Foo', {
+    data: function () {
+    return {
+      src:"img/素材1.jpg",
+      content:"ffrgggg"
+    }
+  },
+  template: `
+  <div class="template-content">
+ <div class="temp_img">
+  	<img :src="src"  width="500px" height="300px"/> 
+  	<span>{{content}}</span>
+  </div>
+ 
+ </div>
+ `
+})
+var Bar=Vue.component('Bar', {
+    data: function () {
+    return {
+      src:"img/素材2.jpg",
+      content:"ffrgggg"
+    }
+  },
+  template: `
+  <div class="template-content">
+ <div class="temp_img">
+  	<img :src="src"  width="500px" height="300px"/> 
+  	<span>{{content}}</span>
+  </div>
+ 
+ </div>
+ `
+})
+var Fang=Vue.component('Fang', {
+    data: function () {
+    return {
+      src:"img/素材3.jpg",
+      content:"ffrgggg"
+    }
+  },
+  template: `
+  <div class="template-content">
+ <div class="temp_img">
+  	<img :src="src"  width="500px" height="300px"/> 
+  	<span>{{content}}</span>
+  </div>
+ 
+ </div>
+ `
+})
+	const routes = [
+  { 
+  	path: '/foo',
+  	component: Foo
+  },
+  {
+  path: '/',
+  component: Foo
+  },
+  {
+  path: '/bar',
+  component: Bar
+  },
+  {
+  path: '/fang',
+  component: Fang
+  }
+  ]
+  const router = new VueRouter({
+  routes // （缩写）相当于 routes: routes
+  
+})
+      	var app=new Vue({
+			el:"#app",
+		    router,
+			data:{
+			iyewu:[
+			{title:"首页"},
+			{title:"业务介绍",data:["xx","xxx","xxxx"]},
+			{title:"走进长平",data:["网店查询","xxx","xxxx"]},
+			{title:"联系我們",data:["xx","xxx","xxxx"]},
+			{title:"动态资讯",data:["xx","xxx","xxxx"]},
+			],
+			
+		},
+		mounted(){
+		 $("#list li a").on("mouseover",function(event){
+     
+         console.log((this))
+         $(this).next().slideDown()
+     	 $("#list li ul li").on("mouseover",function(event){
+     
+        
+         $(this).show()
+     	
+         })
+         }),
+         
+        $("#list li a ").on("mouseout",function(event){
+     	
+         console.log((this))
+         $(this).next().slideUp()
+     	
+        }),
+        window.onload=function(){
+        	console.log("加载完成")
+        	$("#content img").eq(0).css("animation","moves1 6s ease-in-out infinite"),
+        	$("#content img").eq(1).css({"animation":"moves2 6s ease-in-out infinite","transition": "all 1s ease-in-out 2s"}),
+        	$("#content img").eq(2).css({"animation":"moves3 6s ease-in-out infinite","transition": "all 1s ease-in-out 3s"})
+        },
+     
+		$(function(){
+			$('.marquee').liMarquee()
+		})
+	 }
+   })
+      console.log(app)
+	</script>
+</html>
